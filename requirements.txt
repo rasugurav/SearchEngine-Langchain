@@ -22,6 +22,7 @@ langchain_classic
 arxiv
 wikipedia
 duckduckgo-search
+ddgs
 validators
 youtube_transcript_api
 pytube
