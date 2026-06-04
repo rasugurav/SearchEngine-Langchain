@@ -45,7 +45,7 @@ if prompt:=st.chat_input(placeholder="What is machine learning?"):
     tools=[search,wiki,arxiv]
 
 
-    search_agent=initialize_agent(tools,llm,agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,handling_parsing_error=False)
+    search_agent=initialize_agent(tools,llm,agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,handling_parsing_error=True)
 
 
     with st.chat_message("assistant"):
