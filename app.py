@@ -45,12 +45,22 @@ if prompt:=st.chat_input(placeholder="What is machine learning?"):
     tools=[search,wiki,arxiv]
 
 
-    search_agent=initialize_agent(tools,llm,agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,handle_parsing_errors=True)
+    search_agent=initialize_agent(tools,
+                                  llm,
+                                  agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+                                  handle_parsing_errors=True,
+                                 verbose=True
+                                 )
 
 
     with st.chat_message("assistant"):
         st_cb=StreamlitCallbackHandler(st.container(),expand_new_thoughts=True)
-        response=search_agent.run(prompt,callbacks=[st_cb])
+        #response=search_agent.run(prompt,callbacks=[st_cb])
+        try:
+            response = search_agent.run(prompt, callbacks=[st_cb])
+            st.write(response)
+        except Exception as e:
+            st.error(f"Agent Error: {e}")
         st.session_state.messages.append({"role":"assistant","content":response})
         st.write(response)
 
