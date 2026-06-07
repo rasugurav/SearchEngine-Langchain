@@ -48,7 +48,7 @@ if prompt:=st.chat_input(placeholder="What is machine learning?"):
     search_agent=initialize_agent(tools,
                                   llm,
                                   agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-                                  handle_parsing_errors=True,
+                                  handle_parsing_errors=False,
                                  verbose=True
                                  )
 
